@@ -25,4 +25,14 @@ public class CinemaTest {
 		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(550)));
 
 	}
+
+	@Test
+	public void shouldPay9_00forTitanicForOneAdult() throws Exception {
+		final Kasse kasse = new Kasse();
+		kasse.startPurchase("Titanic");
+		kasse.addTicket(15);
+
+		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(900)));
+
+	}
 }

@@ -3,12 +3,14 @@ package de.saxsys.dojo.cinema;
 public class Kasse {
 
 	private int price;
+	private String title;
 
 	public Integer finishPurchase() {
 		return price;
 	}
 
-	void startPurchase(String string) {
+	void startPurchase(String title) {
+		this.title = title;
 		price = 0;
 	}
 
@@ -17,6 +19,9 @@ public class Kasse {
 			price += 800;
 		} else {
 			price += 550;
+		}
+		if (title.equals("Titanic")) {
+			price += 100;
 		}
 	}
 }
