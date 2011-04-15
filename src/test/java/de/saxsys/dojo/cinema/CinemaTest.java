@@ -1,8 +1,8 @@
 package de.saxsys.dojo.cinema;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 public class CinemaTest {
@@ -13,26 +13,42 @@ public class CinemaTest {
 		kasse.startPurchase("Saw");
 		kasse.addTicket(30);
 
-		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(800)));
+		assertThat(kasse.finishPurchase(), is(new Integer(800)));
 	}
 
 	@Test
-	public void shouldPay5_50forSawForOneChild() throws Exception {
+	public void shouldPay550forSawForOneChild() throws Exception {
 		final Kasse kasse = new Kasse();
 		kasse.startPurchase("Saw");
 		kasse.addTicket(14);
 
-		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(550)));
+		assertThat(kasse.finishPurchase(), is(new Integer(550)));
 
 	}
 
 	@Test
-	public void shouldPay9_00forTitanicForOneAdult() throws Exception {
+	public void shouldPay900forTitanicForOneAdult() throws Exception {
 		final Kasse kasse = new Kasse();
 		kasse.startPurchase("Titanic");
 		kasse.addTicket(15);
 
-		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(900)));
+		assertThat(kasse.finishPurchase(), is(new Integer(900)));
 
 	}
+
+	@Test
+	public void shouldPay4000forTitanicforThreeAdultsandTwoChildren()
+			throws Exception {
+		final Kasse kasse = new Kasse();
+		kasse.startPurchase("Titanic");
+		kasse.addTicket(30);
+		kasse.addTicket(15);
+		kasse.addTicket(15);
+		kasse.addTicket(14);
+		kasse.addTicket(14);
+
+		assertThat(kasse.finishPurchase(), is(new Integer(4000)));
+
+	}
+
 }
