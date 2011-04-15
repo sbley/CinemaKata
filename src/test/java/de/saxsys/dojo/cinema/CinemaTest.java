@@ -9,7 +9,7 @@ public class CinemaTest {
 
 	@Test
 	public void shouldPay8forSawForOneAdult() throws Exception {
-		final Kasse kasse = new Kasse();
+		final Cashier kasse = new Cashier();
 		kasse.startPurchase("Saw");
 		kasse.addTicket(30);
 
@@ -18,7 +18,7 @@ public class CinemaTest {
 
 	@Test
 	public void shouldPay550forSawForOneChild() throws Exception {
-		final Kasse kasse = new Kasse();
+		final Cashier kasse = new Cashier();
 		kasse.startPurchase("Saw");
 		kasse.addTicket(14);
 
@@ -28,7 +28,7 @@ public class CinemaTest {
 
 	@Test
 	public void shouldPay900forTitanicForOneAdult() throws Exception {
-		final Kasse kasse = new Kasse();
+		final Cashier kasse = new Cashier();
 		kasse.startPurchase("Titanic");
 		kasse.addTicket(15);
 
@@ -39,7 +39,7 @@ public class CinemaTest {
 	@Test
 	public void shouldPay4000forTitanicforThreeAdultsandTwoChildren()
 			throws Exception {
-		final Kasse kasse = new Kasse();
+		final Cashier kasse = new Cashier();
 		kasse.startPurchase("Titanic");
 		kasse.addTicket(30);
 		kasse.addTicket(15);
@@ -52,7 +52,7 @@ public class CinemaTest {
 
 	@Test
 	public void shouldPay6000forHarryPotterForTenAdults() throws Exception {
-		final Kasse kasse = new Kasse();
+		final Cashier kasse = new Cashier();
 		kasse.startPurchase("Harry Potter");
 		kasse.addTicket(30);
 		kasse.addTicket(30);
@@ -68,7 +68,7 @@ public class CinemaTest {
 	}
 	@Test
 	public void shouldPay6600forSawForElevenAdults() throws Exception {
-		final Kasse kasse = new Kasse();
+		final Cashier kasse = new Cashier();
 		kasse.startPurchase("Saw");
 		kasse.addTicket(30);
 		kasse.addTicket(30);
