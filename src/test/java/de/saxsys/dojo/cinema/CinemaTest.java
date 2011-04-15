@@ -13,7 +13,7 @@ public class CinemaTest {
 		kasse.startPurchase("Saw");
 		kasse.addTicket(30);
 
-		assertThat(kasse.finishPurchase(), is(new Integer(800)));
+		assertThat(kasse.finishPurchase(), is(800));
 	}
 
 	@Test
@@ -22,7 +22,7 @@ public class CinemaTest {
 		kasse.startPurchase("Saw");
 		kasse.addTicket(14);
 
-		assertThat(kasse.finishPurchase(), is(new Integer(550)));
+		assertThat(kasse.finishPurchase(), is(550));
 
 	}
 
@@ -32,7 +32,7 @@ public class CinemaTest {
 		kasse.startPurchase("Titanic");
 		kasse.addTicket(15);
 
-		assertThat(kasse.finishPurchase(), is(new Integer(900)));
+		assertThat(kasse.finishPurchase(), is(900));
 
 	}
 
@@ -47,8 +47,24 @@ public class CinemaTest {
 		kasse.addTicket(14);
 		kasse.addTicket(14);
 
-		assertThat(kasse.finishPurchase(), is(new Integer(4000)));
-
+		assertThat(kasse.finishPurchase(), is(4000));
 	}
 
+	@Test
+	public void shouldPay6000forHarryPotterForTenAdults() throws Exception {
+		final Kasse kasse = new Kasse();
+		kasse.startPurchase("Harry Potter");
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		assertThat(kasse.finishPurchase(), is(6000));
+
+	}
 }

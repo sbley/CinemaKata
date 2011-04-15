@@ -4,10 +4,7 @@ public class Kasse {
 
 	private int price;
 	private String title;
-
-	public Integer finishPurchase() {
-		return price;
-	}
+	private int ticketCount;
 
 	void startPurchase(String title) {
 		this.title = title;
@@ -15,6 +12,8 @@ public class Kasse {
 	}
 
 	public void addTicket(int i) {
+		ticketCount++;
+
 		if (i > 14) {
 			price += 800;
 		} else {
@@ -23,5 +22,11 @@ public class Kasse {
 		if (title.equals("Titanic")) {
 			price += 100;
 		}
+	}
+
+	public Integer finishPurchase() {
+		if (ticketCount == 10)
+			return 6000;
+		return price;
 	}
 }
