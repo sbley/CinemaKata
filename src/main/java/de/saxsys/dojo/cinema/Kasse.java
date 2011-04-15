@@ -8,4 +8,9 @@ public class Kasse {
 		return i;
 	}
 
+	void startPurchase(String string) {
+	}
+
+	public void addTicket(int i) {
+	}
 }

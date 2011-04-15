@@ -9,7 +9,11 @@ public class CinemaTest {
 
 	@Test
 	public void shouldPay8forSawForOneAdult() throws Exception {
-		assertThat(new Kasse().finishPurchase(),
-				CoreMatchers.is(new Integer(8)));
+		final Kasse kasse = new Kasse();
+		kasse.startPurchase("Saw");
+		kasse.addTicket(30);
+
+		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(8)));
 	}
+
 }
