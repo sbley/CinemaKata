@@ -65,6 +65,22 @@ public class CinemaTest {
 		kasse.addTicket(30);
 		kasse.addTicket(30);
 		assertThat(kasse.finishPurchase(), is(6000));
-
+	}
+	@Test
+	public void shouldPay6600forSawForElevenAdults() throws Exception {
+		final Kasse kasse = new Kasse();
+		kasse.startPurchase("Saw");
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		kasse.addTicket(30);
+		assertThat(kasse.finishPurchase(), is(6600));
 	}
 }
