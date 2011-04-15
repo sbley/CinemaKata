@@ -13,7 +13,16 @@ public class CinemaTest {
 		kasse.startPurchase("Saw");
 		kasse.addTicket(30);
 
-		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(8)));
+		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(800)));
 	}
 
+	@Test
+	public void shouldPay5_50forSawForOneChild() throws Exception {
+		final Kasse kasse = new Kasse();
+		kasse.startPurchase("Saw");
+		kasse.addTicket(14);
+
+		assertThat(kasse.finishPurchase(), CoreMatchers.is(new Integer(550)));
+
+	}
 }
