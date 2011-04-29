@@ -2,7 +2,7 @@ package de.saxsys.dojo.cinema;
 
 public class Cashier {
 
-	private int price;
+	private int totalPrice;
 	private String title;
 	private int ticketCount;
 
@@ -14,21 +14,25 @@ public class Cashier {
 		ticketCount++;
 
 		if (age > 14) {
-			price += 800;
+			totalPrice += 800;
 		} else {
-			price += 550;
+			totalPrice += 550;
 		}
 		if (title.equals("Titanic")) {
-			price += 100;
+			totalPrice += 100;
 		}
 	}
 
 	public int finishPurchase() {
-		int discounted = ticketCount * 600;
 
-		if (ticketCount >= 10 && discounted < price)
-			return discounted;
+		if (ticketCount >= 10) {
+			int discounted = ticketCount * 600;
 
-		return price;
+			if (discounted < totalPrice) {
+				return discounted;
+			}
+		}
+
+		return totalPrice;
 	}
 }
