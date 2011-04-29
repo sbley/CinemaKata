@@ -18,18 +18,17 @@ public class Cashier {
 		} else {
 			totalPrice += 550;
 		}
-		if (title.equals("Titanic")) {
-			totalPrice += 100;
-		}
 	}
 
 	public int finishPurchase() {
 		int discounted;
+		if (isOvertime()) {
+			totalPrice += 100 * ticketCount;
+		}
 		if (ticketCount >= 10) {
-			if (title.equals("Titanic")) {
+			if (isOvertime()) {
 				discounted = ticketCount * 700;
 			} else {
-
 				discounted = ticketCount * 600;
 			}
 			if (discounted < totalPrice) {
@@ -39,5 +38,9 @@ public class Cashier {
 		}
 
 		return totalPrice;
+	}
+
+	private boolean isOvertime() {
+		return title.equals("Titanic");
 	}
 }
