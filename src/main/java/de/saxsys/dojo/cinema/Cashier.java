@@ -24,8 +24,11 @@ public class Cashier {
 	}
 
 	public int finishPurchase() {
-		if (ticketCount >= 10)
-			return ticketCount * 600;
+		int discounted = ticketCount * 600;
+
+		if (ticketCount >= 10 && discounted < price)
+			return discounted;
+
 		return price;
 	}
 }

@@ -72,6 +72,15 @@ public class CinemaTest {
 		assertThat(kasse.finishPurchase(), is(6600));
 	}
 
+	@Test
+	public void shouldPay5500forSawForTenChildren() throws Exception {
+		final Cashier kasse = new Cashier();
+		kasse.startPurchase("Saw");
+		addTickets(kasse, 10, 8 /* Age in years */);
+
+		assertThat(kasse.finishPurchase(), is(5500));
+	}
+
 	private void addTickets(Cashier kasse, int count, int age) {
 
 		for (int i = 0; i < count; i++) {
