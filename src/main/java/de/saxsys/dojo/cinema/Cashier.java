@@ -24,13 +24,18 @@ public class Cashier {
 	}
 
 	public int finishPurchase() {
-
+		int discounted;
 		if (ticketCount >= 10) {
-			int discounted = ticketCount * 600;
+			if (title.equals("Titanic")) {
+				discounted = ticketCount * 700;
+			} else {
 
+				discounted = ticketCount * 600;
+			}
 			if (discounted < totalPrice) {
 				return discounted;
 			}
+
 		}
 
 		return totalPrice;
