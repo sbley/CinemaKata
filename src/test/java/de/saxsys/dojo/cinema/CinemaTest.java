@@ -57,16 +57,7 @@ public class CinemaTest {
 
 		final Cashier kasse = new Cashier();
 		kasse.startPurchase("Harry Potter");
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
+		addTickets(kasse, 10, 30);
 
 		assertThat(kasse.finishPurchase(), is(6000));
 	}
@@ -76,18 +67,16 @@ public class CinemaTest {
 
 		final Cashier kasse = new Cashier();
 		kasse.startPurchase("Saw");
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
-		kasse.addTicket(30);
+		addTickets(kasse, 11, 30);
 
 		assertThat(kasse.finishPurchase(), is(6600));
 	}
+
+	private void addTickets(Cashier kasse, int count, int age) {
+
+		for (int i = 0; i < count; i++) {
+			kasse.addTicket(age);
+		}
+	}
+
 }
