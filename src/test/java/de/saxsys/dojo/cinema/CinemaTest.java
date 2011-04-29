@@ -99,6 +99,14 @@ public class CinemaTest {
 		assertThat(kasse.finishPurchase(), is(7000));
 	}
 
+	@Test
+	public void shouldPay6500forTitanicForTenKids() throws Exception {
+		final Cashier kasse = new Cashier();
+		kasse.startPurchase("Titanic");
+		addTickets(kasse, 10, 8);
+		assertThat(kasse.finishPurchase(), is(6500));
+	}
+
 	private void addTickets(Cashier kasse, int count, int age) {
 
 		for (int i = 0; i < count; i++) {
