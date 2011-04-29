@@ -21,23 +21,17 @@ public class Cashier {
 	}
 
 	public int finishPurchase() {
-		int discounted;
-		if (isOvertime()) {
-			totalPrice += 100 * ticketCount;
-		}
+		int price = totalPrice;
 		if (ticketCount >= 10) {
-			if (isOvertime()) {
-				discounted = ticketCount * 700;
-			} else {
-				discounted = ticketCount * 600;
+			int discountedPrice = ticketCount * 600;
+			if (discountedPrice < totalPrice) {
+				price = discountedPrice;
 			}
-			if (discounted < totalPrice) {
-				return discounted;
-			}
-
 		}
-
-		return totalPrice;
+		if (isOvertime()) {
+			price += 100 * ticketCount;
+		}
+		return price;
 	}
 
 	private boolean isOvertime() {
