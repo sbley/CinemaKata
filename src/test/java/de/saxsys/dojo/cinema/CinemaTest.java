@@ -81,6 +81,16 @@ public class CinemaTest {
 		assertThat(kasse.finishPurchase(), is(5500));
 	}
 
+	@Test
+	public void shouldPay7200forHarryPotterForEightChildrenAndFourAdults()
+			throws Exception {
+		final Cashier kasse = new Cashier();
+		kasse.startPurchase("Harry Potter");
+		addTickets(kasse, 8, 8);
+		addTickets(kasse, 4, 102);
+		assertThat(kasse.finishPurchase(), is(7200));
+	}
+
 	private void addTickets(Cashier kasse, int count, int age) {
 
 		for (int i = 0; i < count; i++) {
