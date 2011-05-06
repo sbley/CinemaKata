@@ -114,7 +114,7 @@ public class CinemaTest {
 	}
 
 	@Test(expected = Exception.class)
-	public void cashierShouldThrowExceptionWithoutAMovie() throws Exception {
+	public void cashierShouldFailWithoutAMovie() throws Exception {
 		new Cashier();
 	}
 
