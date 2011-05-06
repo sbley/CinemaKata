@@ -1,5 +1,8 @@
 package de.saxsys.dojo.cinema;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Cashier {
 
 	private static final int RATE_CHILD = 550;
@@ -12,12 +15,17 @@ public class Cashier {
 	private int standardPrice;
 	private String movieTitle;
 	private int ticketCount;
+	private List<String> knownMovies;
 
 	public Cashier(String... movies) {
+		knownMovies = Arrays.asList(movies);
 	}
 
-	public void startPurchase(String movieTitle) {
+	public void startPurchase(String movieTitle) throws Exception {
+
 		this.movieTitle = movieTitle;
+		if (!knownMovies.contains(movieTitle))
+			throw new Exception("unknown movie");
 	}
 
 	public void addTicket(int age) {
