@@ -13,6 +13,9 @@ public class Cashier {
 	private String movieTitle;
 	private int ticketCount;
 
+	public Cashier(String... movies) {
+	}
+
 	public void startPurchase(String movieTitle) {
 		this.movieTitle = movieTitle;
 	}

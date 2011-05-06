@@ -107,6 +107,15 @@ public class CinemaTest {
 		assertThat(kasse.finishPurchase(), is(6500));
 	}
 
+	@Test
+	public void shouldAcceptNewMoviesOnOpening() throws Exception {
+		final Cashier kasse = new Cashier("Lola");
+		kasse.startPurchase("Lola");
+		kasse.addTicket(30);
+
+		assertThat(kasse.finishPurchase(), is(800));
+	}
+
 	private void addTickets(Cashier kasse, int count, int age) {
 
 		for (int i = 0; i < count; i++) {
