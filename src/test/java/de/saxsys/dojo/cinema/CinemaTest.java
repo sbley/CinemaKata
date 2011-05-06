@@ -3,7 +3,6 @@ package de.saxsys.dojo.cinema;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 public class CinemaTest {
@@ -106,17 +105,6 @@ public class CinemaTest {
 		kasse.startPurchase("Titanic");
 		addTickets(kasse, 10, 8);
 		assertThat(kasse.finishPurchase(), is(6500));
-	}
-
-	@Test
-	public void shouldAcceptNewMoviesOnOpening() throws Exception {
-		try {
-			final Cashier kasse = new Cashier("Lola");
-			kasse.startPurchase("Lola");
-		} catch (Exception e) {
-			Assert.fail();
-
-		}
 	}
 
 	@Test(expected = Exception.class)
