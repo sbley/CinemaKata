@@ -113,6 +113,11 @@ public class CinemaTest {
 		kasse.startPurchase("Olaf");
 	}
 
+	@Test(expected = Exception.class)
+	public void cashierShouldThrowExceptionWithoutAMovie() throws Exception {
+		new Cashier();
+	}
+
 	private void addTickets(Cashier kasse, int count, int age) {
 
 		for (int i = 0; i < count; i++) {

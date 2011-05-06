@@ -17,7 +17,10 @@ public class Cashier {
 	private int ticketCount;
 	private List<String> knownMovies;
 
-	public Cashier(String... movies) {
+	public Cashier(String... movies) throws Exception {
+		if (movies.length == 0) {
+			throw new Exception();
+		}
 		knownMovies = Arrays.asList(movies);
 	}
 
