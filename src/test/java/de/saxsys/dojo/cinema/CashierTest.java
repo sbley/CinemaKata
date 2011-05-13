@@ -115,7 +115,8 @@ public class CashierTest {
 
 	@Test(expected = Exception.class)
 	public void cashierShouldFailWithoutAMovie() throws Exception {
-		new Cashier();
+		String[] movies = null;
+		new Cashier(movies);
 	}
 
 	@Test

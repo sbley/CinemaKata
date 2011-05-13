@@ -16,25 +16,35 @@ public class Cashier {
 	private int standardPrice;
 	private String movieTitle;
 	private int ticketCount;
-	private List<String> knownMovies;
+	private List<Movie> knownMovies;
 
-	public Cashier(String... movies) throws Exception {
-		if (movies.length == 0) {
+	public Cashier(String... movieTitles) throws Exception {
+		if (movieTitles.length == 0) {
 			throw new Exception();
 		}
-		knownMovies = Arrays.asList(movies);
+		knownMovies = new ArrayList<Movie>();
+		for (String title : movieTitles) {
+			knownMovies.add(new Movie(title, false));
+		}
 	}
 
-	public Cashier(Movie herrDerRinge, Movie highlander) {
-		knownMovies = new ArrayList<String>();
-		knownMovies.add(herrDerRinge.getTitle());
+	public Cashier(Movie... movies) {
+		knownMovies = Arrays.asList(movies);
 	}
 
 	public void startPurchase(String movieTitle) throws Exception {
 
 		this.movieTitle = movieTitle;
-		if (!knownMovies.contains(movieTitle))
+		boolean found = false;
+		for (Movie movie : knownMovies) {
+			if (movie.getTitle().equals(movieTitle)) {
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
 			throw new Exception("unknown movie");
+		}
 	}
 
 	public void addTicket(int age) {
