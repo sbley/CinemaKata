@@ -50,13 +50,9 @@ public class Cashier {
 			int groupPrice = ticketCount * GROUP_RATE;
 			price = Math.min(groupPrice, standardPrice);
 		}
-		if (isOvertime()) {
+		if (movie.isOverTime()) {
 			price += ticketCount * OVERTIME_RATE;
 		}
 		return price;
-	}
-
-	private boolean isOvertime() {
-		return movie.isOverTime();
 	}
 }
