@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class CinemaTest {
+public class CashierTest {
 
 	@Test
 	public void shouldPay800forSawForOneAdult() throws Exception {
