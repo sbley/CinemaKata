@@ -1,5 +1,6 @@
 package de.saxsys.dojo.cinema;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,6 +23,11 @@ public class Cashier {
 			throw new Exception();
 		}
 		knownMovies = Arrays.asList(movies);
+	}
+
+	public Cashier(Movie herrDerRinge, Movie highlander) {
+		knownMovies = new ArrayList<String>();
+		knownMovies.add(herrDerRinge.getTitle());
 	}
 
 	public void startPurchase(String movieTitle) throws Exception {
@@ -54,6 +60,7 @@ public class Cashier {
 	}
 
 	private boolean isOvertime() {
-		return movieTitle.equals("Titanic");
+		return ((movieTitle.equals("Titanic")) || (movieTitle
+				.equals("Herr der Ringe 1")));
 	}
 }

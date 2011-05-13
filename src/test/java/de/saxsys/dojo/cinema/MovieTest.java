@@ -19,4 +19,10 @@ public class MovieTest {
 				new Movie("Saw", false).isOverTime(), is(false));
 	}
 
+	@Test
+	public void highlanderKnowsItsName() throws Exception {
+		assertThat("Der Film sollte schon seinen Namen kennen... Tstststss",
+				new Movie("Highlander", false).getTitle(), is("Highlander"));
+	}
+
 }
