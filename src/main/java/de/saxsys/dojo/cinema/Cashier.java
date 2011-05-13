@@ -13,7 +13,9 @@ public class Cashier {
 	private static final int MAX_AGE_CHILD = 14;
 
 	private int standardPrice;
-	private String movieTitle;
+
+	private Movie movie;
+
 	private int ticketCount;
 	private List<Movie> knownMovies;
 
@@ -23,17 +25,13 @@ public class Cashier {
 
 	public void startPurchase(String movieTitle) throws Exception {
 
-		this.movieTitle = movieTitle;
-		boolean found = false;
 		for (Movie movie : knownMovies) {
 			if (movie.getTitle().equals(movieTitle)) {
-				found = true;
-				break;
+				this.movie = movie;
+				return;
 			}
 		}
-		if (!found) {
-			throw new Exception("unknown movie");
-		}
+		throw new Exception("unknown movie");
 	}
 
 	public void addTicket(int age) {
@@ -59,7 +57,6 @@ public class Cashier {
 	}
 
 	private boolean isOvertime() {
-		return ((movieTitle.equals("Titanic")) || (movieTitle
-				.equals("Herr der Ringe 1")));
+		return movie.isOverTime();
 	}
 }

@@ -41,7 +41,7 @@ public class CashierTest {
 	public void shouldPay4000forTitanicforThreeAdultsandTwoChildren()
 			throws Exception {
 
-		final Cashier kasse = new Cashier(new Movie("Titanic", false));
+		final Cashier kasse = new Cashier(new Movie("Titanic", true));
 		kasse.startPurchase("Titanic");
 		kasse.addTicket(30);
 		kasse.addTicket(15);
