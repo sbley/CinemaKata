@@ -1,6 +1,5 @@
 package de.saxsys.dojo.cinema;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,16 +16,6 @@ public class Cashier {
 	private String movieTitle;
 	private int ticketCount;
 	private List<Movie> knownMovies;
-
-	public Cashier(String... movieTitles) throws Exception {
-		if (movieTitles.length == 0) {
-			throw new Exception();
-		}
-		knownMovies = new ArrayList<Movie>();
-		for (String title : movieTitles) {
-			knownMovies.add(new Movie(title, false));
-		}
-	}
 
 	public Cashier(Movie... movies) {
 		knownMovies = Arrays.asList(movies);
