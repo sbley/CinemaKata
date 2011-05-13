@@ -12,4 +12,11 @@ public class MovieTest {
 		assertThat("Überlängefilm teilt Überlänge mit", new Movie("Titanic",
 				true).isOverTime(), is(true));
 	}
+
+	@Test
+	public void sawIsNoOvertimeMovie() throws Exception {
+		assertThat("Saw hat normale Länge",
+				new Movie("Saw", false).isOverTime(), is(false));
+	}
+
 }
