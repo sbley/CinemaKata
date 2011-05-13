@@ -118,6 +118,12 @@ public class CinemaTest {
 		new Cashier();
 	}
 
+	@Test
+	public void couldCashierStartTwoMovies() throws Exception {
+		new Cashier("Es", "Sie");
+
+	}
+
 	private void addTickets(Cashier kasse, int count, int age) {
 
 		for (int i = 0; i < count; i++) {
