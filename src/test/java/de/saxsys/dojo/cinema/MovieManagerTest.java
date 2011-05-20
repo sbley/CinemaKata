@@ -23,4 +23,5 @@ public class MovieManagerTest {
 		movieManager.setKnownMovies(Arrays.asList(movie));
 		movieManager.getMovieByName("blub");
 	}
+
 }

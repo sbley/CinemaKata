@@ -15,17 +15,22 @@ public class Cashier {
 	private int ticketCount;
 	private Movie movie;
 
-	private MovieManager movies = new MovieManager();
+	private MovieManager movieManager;
 
 	public Cashier(Movie... movies) {
-		this.movies.setKnownMovies(Arrays.asList(movies));
+		this(new MovieManager());
+		this.movieManager.setKnownMovies(Arrays.asList(movies));
+	}
+
+	public Cashier(MovieManager movieManager) {
+		this.movieManager = movieManager;
 	}
 
 	public void startPurchase(String movieTitle) throws Exception {
 
 		resetPurchase();
 
-		movie = movies.getMovieByName(movieTitle);
+		movie = movieManager.getMovieByName(movieTitle);
 	}
 
 	public void addTicket(int age) {

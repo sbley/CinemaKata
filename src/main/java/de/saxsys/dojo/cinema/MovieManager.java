@@ -8,10 +8,6 @@ public class MovieManager {
 	public MovieManager() {
 	}
 
-	public List<Movie> getKnownMovies() {
-		return knownMovies;
-	}
-
 	public void setKnownMovies(List<Movie> knownMovies) {
 		this.knownMovies = knownMovies;
 	}
