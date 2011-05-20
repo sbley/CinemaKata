@@ -1,7 +1,6 @@
 package de.saxsys.dojo.cinema;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class Cashier {
 
@@ -14,25 +13,19 @@ public class Cashier {
 
 	private int standardPrice;
 	private int ticketCount;
-
 	private Movie movie;
 
-	private List<Movie> knownMovies;
+	private MovieManager movies = new MovieManager();
 
 	public Cashier(Movie... movies) {
-		knownMovies = Arrays.asList(movies);
+		this.movies.setKnownMovies(Arrays.asList(movies));
 	}
 
 	public void startPurchase(String movieTitle) throws Exception {
 
 		resetPurchase();
-		for (Movie movie : knownMovies) {
-			if (movie.getTitle().equals(movieTitle)) {
-				this.movie = movie;
-				return;
-			}
-		}
-		throw new Exception("unknown movie");
+
+		movie = movies.getMovieByName(movieTitle);
 	}
 
 	public void addTicket(int age) {
