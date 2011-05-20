@@ -122,7 +122,6 @@ public class CashierTest {
 	@Test
 	public void couldCashierStartTwoMovies() throws Exception {
 		new Cashier(new Movie("Es", false), new Movie("Sie", false));
-
 	}
 
 	@Test
@@ -136,11 +135,22 @@ public class CashierTest {
 				kasse.finishPurchase(), is(900));
 	}
 
-	private void addTickets(Cashier kasse, int count, int age) {
+	@Test
+	public void shouldRunMultipleTimes() throws Exception {
+		Movie herrDerRinge = new Movie("Herr der Ringe 1", true);
+		Movie highlander = new Movie("Highlander", false);
+		Cashier kasse = new Cashier(herrDerRinge, highlander);
+		kasse.startPurchase("Herr der Ringe 1");
+		kasse.addTicket(42);
+		assertThat(kasse.finishPurchase(), is(900));
+		kasse.startPurchase("Highlander");
+		kasse.addTicket(10);
+		assertThat(kasse.finishPurchase(), is(550));
+	}
 
+	private void addTickets(Cashier kasse, int count, int age) {
 		for (int i = 0; i < count; i++) {
 			kasse.addTicket(age);
 		}
 	}
-
 }

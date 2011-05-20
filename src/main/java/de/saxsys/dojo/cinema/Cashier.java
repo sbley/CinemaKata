@@ -13,10 +13,10 @@ public class Cashier {
 	private static final int MAX_AGE_CHILD = 14;
 
 	private int standardPrice;
+	private int ticketCount;
 
 	private Movie movie;
 
-	private int ticketCount;
 	private List<Movie> knownMovies;
 
 	public Cashier(Movie... movies) {
@@ -25,6 +25,7 @@ public class Cashier {
 
 	public void startPurchase(String movieTitle) throws Exception {
 
+		resetPurchase();
 		for (Movie movie : knownMovies) {
 			if (movie.getTitle().equals(movieTitle)) {
 				this.movie = movie;
@@ -53,6 +54,12 @@ public class Cashier {
 		if (movie.isOverTime()) {
 			price += ticketCount * OVERTIME_RATE;
 		}
+
 		return price;
+	}
+
+	private void resetPurchase() {
+		ticketCount = 0;
+		standardPrice = 0;
 	}
 }
