@@ -17,9 +17,11 @@ public class Cashier {
 
 	private MovieManager movieManager;
 
+	@Deprecated
 	public Cashier(Movie... movies) {
 		this(new MovieManager());
 		this.movieManager.setKnownMovies(Arrays.asList(movies));
+
 	}
 
 	public Cashier(MovieManager movieManager) {
