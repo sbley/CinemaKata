@@ -1,6 +1,5 @@
 package de.saxsys.dojo.cinema;
 
-
 public class Cashier {
 
 	private static final int RATE_CHILD = 550;
@@ -53,5 +52,9 @@ public class Cashier {
 	private void resetPurchase() {
 		ticketCount = 0;
 		standardPrice = 0;
+	}
+
+	public void addTicketForDisabled() {
+		addTicket(-MAX_AGE_CHILD);
 	}
 }
