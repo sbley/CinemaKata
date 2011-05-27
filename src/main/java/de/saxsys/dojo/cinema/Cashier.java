@@ -20,9 +20,7 @@ public class Cashier {
 	}
 
 	public void startPurchase(String movieTitle) throws Exception {
-
 		resetPurchase();
-
 		movie = movieManager.getMovieByName(movieTitle);
 	}
 
@@ -34,6 +32,11 @@ public class Cashier {
 		} else {
 			standardPrice += RATE_ADULT;
 		}
+	}
+
+	public void addTicketForDisabled(boolean withAccompanyingPerson) {
+		ticketCount++;
+		standardPrice += RATE_CHILD;
 	}
 
 	public int finishPurchase() {
@@ -52,9 +55,5 @@ public class Cashier {
 	private void resetPurchase() {
 		ticketCount = 0;
 		standardPrice = 0;
-	}
-
-	public void addTicketForDisabled(boolean with2Persons) {
-		addTicket(-MAX_AGE_CHILD);
 	}
 }

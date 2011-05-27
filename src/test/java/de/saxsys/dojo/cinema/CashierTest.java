@@ -14,15 +14,14 @@ public class CashierTest {
 
 	@Before
 	public void initializeCashier() {
-		Movie herrDerRinge = new Movie("Herr der Ringe 1", true);
 		Movie highlander = new Movie("Highlander", false);
-		final Movie saw = new Movie("Saw", false);
-		final Movie titanic = new Movie("Titanic", true);
-		final Movie harryPotter = new Movie("Harry Potter", false);
-		final Movie siebenLeben = new Movie("Sieben Leben", false);
-		kasse = initCashier(saw,
-				titanic, harryPotter,
-				herrDerRinge, highlander, siebenLeben);
+		Movie saw = new Movie("Saw", false);
+		Movie harryPotter = new Movie("Harry Potter", false);
+		Movie siebenLeben = new Movie("Sieben Leben", false);
+		Movie titanic = new Movie("Titanic", true);
+		Movie herrDerRinge = new Movie("Herr der Ringe 1", true);
+		kasse = initCashier(saw, titanic, harryPotter, herrDerRinge,
+				highlander, siebenLeben);
 	}
 
 	@Test
@@ -137,14 +136,15 @@ public class CashierTest {
 	}
 
 	@Test
-	public void shouldPayDisabled() throws Exception {
+	public void shouldPay550ForSiebenLebenForDisabled() throws Exception {
 		kasse.startPurchase("Sieben Leben");
 		kasse.addTicketForDisabled(false);
 		assertThat(kasse.finishPurchase(), is(550));
 	}
 
 	@Test
-	public void shouldPayDisabledWith2Persons() throws Exception {
+	public void shouldPay550ForSiebenLebenForDisabledAndAccompanyingPerson()
+			throws Exception {
 		kasse.startPurchase("Sieben Leben");
 		kasse.addTicketForDisabled(true);
 		assertThat(kasse.finishPurchase(), is(550));
