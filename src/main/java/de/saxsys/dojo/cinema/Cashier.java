@@ -1,6 +1,5 @@
 package de.saxsys.dojo.cinema;
 
-import java.util.Arrays;
 
 public class Cashier {
 
@@ -16,13 +15,6 @@ public class Cashier {
 	private Movie movie;
 
 	private MovieManager movieManager;
-
-	@Deprecated
-	public Cashier(Movie... movies) {
-		this(new MovieManager());
-		this.movieManager.setKnownMovies(Arrays.asList(movies));
-
-	}
 
 	public Cashier(MovieManager movieManager) {
 		this.movieManager = movieManager;

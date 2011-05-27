@@ -3,6 +3,8 @@ package de.saxsys.dojo.cinema;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
 public class CashierTest {
@@ -10,7 +12,7 @@ public class CashierTest {
 	@Test
 	public void shouldPay800forSawForOneAdult() throws Exception {
 
-		final Cashier kasse = new Cashier(new Movie("Saw", false));
+		final Cashier kasse = initCashier(new Movie("Saw", false));
 		kasse.startPurchase("Saw");
 		kasse.addTicket(30);
 
@@ -20,7 +22,7 @@ public class CashierTest {
 	@Test
 	public void shouldPay550forSawForOneChild() throws Exception {
 
-		final Cashier kasse = new Cashier(new Movie("Saw", false));
+		final Cashier kasse = initCashier(new Movie("Saw", false));
 		kasse.startPurchase("Saw");
 		kasse.addTicket(14);
 
@@ -30,7 +32,7 @@ public class CashierTest {
 	@Test
 	public void shouldPay900forTitanicForOneAdult() throws Exception {
 
-		final Cashier kasse = new Cashier(new Movie("Titanic", true));
+		final Cashier kasse = initCashier(new Movie("Titanic", true));
 		kasse.startPurchase("Titanic");
 		kasse.addTicket(15);
 
@@ -41,7 +43,7 @@ public class CashierTest {
 	public void shouldPay4000forTitanicforThreeAdultsandTwoChildren()
 			throws Exception {
 
-		final Cashier kasse = new Cashier(new Movie("Titanic", true));
+		final Cashier kasse = initCashier(new Movie("Titanic", true));
 		kasse.startPurchase("Titanic");
 		kasse.addTicket(30);
 		kasse.addTicket(15);
@@ -55,7 +57,7 @@ public class CashierTest {
 	@Test
 	public void shouldPay6000forHarryPotterForTenAdults() throws Exception {
 
-		final Cashier kasse = new Cashier(new Movie("Harry Potter", false));
+		final Cashier kasse = initCashier(new Movie("Harry Potter", false));
 		kasse.startPurchase("Harry Potter");
 		addTickets(kasse, 10, 30);
 
@@ -65,7 +67,7 @@ public class CashierTest {
 	@Test
 	public void shouldPay6600forSawForElevenAdults() throws Exception {
 
-		final Cashier kasse = new Cashier(new Movie("Saw", false));
+		final Cashier kasse = initCashier(new Movie("Saw", false));
 		kasse.startPurchase("Saw");
 		addTickets(kasse, 11, 30);
 
@@ -74,7 +76,7 @@ public class CashierTest {
 
 	@Test
 	public void shouldPay5500forSawForTenChildren() throws Exception {
-		final Cashier kasse = new Cashier(new Movie("Saw", false));
+		final Cashier kasse = initCashier(new Movie("Saw", false));
 		kasse.startPurchase("Saw");
 		addTickets(kasse, 10, 8 /* Age in years */);
 
@@ -84,7 +86,7 @@ public class CashierTest {
 	@Test
 	public void shouldPay7200forHarryPotterForEightChildrenAndFourAdults()
 			throws Exception {
-		final Cashier kasse = new Cashier(new Movie("Harry Potter", false));
+		final Cashier kasse = initCashier(new Movie("Harry Potter", false));
 		kasse.startPurchase("Harry Potter");
 		addTickets(kasse, 8, 8);
 		addTickets(kasse, 4, 102);
@@ -93,7 +95,7 @@ public class CashierTest {
 
 	@Test
 	public void shouldPay7000forTitanicForTenAdults() throws Exception {
-		final Cashier kasse = new Cashier(new Movie("Titanic", true));
+		final Cashier kasse = initCashier(new Movie("Titanic", true));
 		kasse.startPurchase("Titanic");
 		addTickets(kasse, 10, 77);
 		assertThat(kasse.finishPurchase(), is(7000));
@@ -101,7 +103,7 @@ public class CashierTest {
 
 	@Test
 	public void shouldPay6500forTitanicForTenKids() throws Exception {
-		final Cashier kasse = new Cashier(new Movie("Titanic", true));
+		final Cashier kasse = initCashier(new Movie("Titanic", true));
 		kasse.startPurchase("Titanic");
 		addTickets(kasse, 10, 8);
 		assertThat(kasse.finishPurchase(), is(6500));
@@ -109,26 +111,26 @@ public class CashierTest {
 
 	@Test(expected = Exception.class)
 	public void shouldDenyUnknownMovieTicketPurchase() throws Exception {
-		final Cashier kasse = new Cashier(new Movie("Lola", false));
+		final Cashier kasse = initCashier(new Movie("Lola", false));
 		kasse.startPurchase("Olaf");
 	}
 
 	@Test(expected = Exception.class)
 	public void cashierShouldFailWithoutAMovie() throws Exception {
 		Movie[] movies = null;
-		new Cashier(movies);
+		initCashier(movies);
 	}
 
 	@Test
 	public void couldCashierStartTwoMovies() throws Exception {
-		new Cashier(new Movie("Es", false), new Movie("Sie", false));
+		initCashier(new Movie("Es", false), new Movie("Sie", false));
 	}
 
 	@Test
 	public void shouldPay900ForOvertimeMovie() throws Exception {
 		Movie herrDerRinge = new Movie("Herr der Ringe 1", true);
 		Movie highlander = new Movie("Highlander", false);
-		Cashier kasse = new Cashier(herrDerRinge, highlander);
+		Cashier kasse = initCashier(herrDerRinge, highlander);
 		kasse.startPurchase("Herr der Ringe 1");
 		kasse.addTicket(42);
 		assertThat("Kasse muss Filme unterscheiden können.",
@@ -139,7 +141,7 @@ public class CashierTest {
 	public void shouldRunMultipleTimes() throws Exception {
 		Movie herrDerRinge = new Movie("Herr der Ringe 1", true);
 		Movie highlander = new Movie("Highlander", false);
-		Cashier kasse = new Cashier(herrDerRinge, highlander);
+		Cashier kasse = initCashier(herrDerRinge, highlander);
 		kasse.startPurchase("Herr der Ringe 1");
 		kasse.addTicket(42);
 		assertThat(kasse.finishPurchase(), is(900));
@@ -152,5 +154,11 @@ public class CashierTest {
 		for (int i = 0; i < count; i++) {
 			kasse.addTicket(age);
 		}
+	}
+
+	private Cashier initCashier(Movie... movies) {
+		final MovieManager movieManager = new MovieManager();
+		movieManager.setKnownMovies(Arrays.asList(movies));
+		return new Cashier(movieManager);
 	}
 }
