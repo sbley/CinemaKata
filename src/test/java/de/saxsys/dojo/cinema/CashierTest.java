@@ -155,7 +155,16 @@ public class CashierTest {
 		Movie siebenLeben = new Movie("Sieben Leben", false);
 		Cashier kasse = initCashier(siebenLeben);
 		kasse.startPurchase("Sieben Leben");
-		kasse.addTicketForDisabled();
+		kasse.addTicketForDisabled(false);
+		assertThat(kasse.finishPurchase(), is(550));
+	}
+
+	@Test
+	public void shouldPayDisabledWith2Persons() throws Exception {
+		Movie siebenLeben = new Movie("Sieben Leben", false);
+		Cashier kasse = initCashier(siebenLeben);
+		kasse.startPurchase("Sieben Leben");
+		kasse.addTicketForDisabled(true);
 		assertThat(kasse.finishPurchase(), is(550));
 	}
 

@@ -54,7 +54,7 @@ public class Cashier {
 		standardPrice = 0;
 	}
 
-	public void addTicketForDisabled() {
+	public void addTicketForDisabled(boolean with2Persons) {
 		addTicket(-MAX_AGE_CHILD);
 	}
 }
